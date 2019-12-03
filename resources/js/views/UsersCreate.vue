@@ -44,6 +44,7 @@
                 this.message = false
                 api.create(this.user)
                     .then((response) => {
+                        this.message = 'User Created';
                         this.$router.push({ name: 'users.edit', params: { id: response.data.data.id } });
                     })
                     .catch((e) => {

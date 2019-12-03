@@ -1,10 +1,13 @@
 <template>
+
     <div class="users">
         <div v-if="error" class="error">
             <p>{{ error }}</p>
         </div>
+        <div v-if="message" class="alert">{{ message }}</div>
 
         <ul v-if="users">
+
             <li v-for="{ id, name, email } in users">
                 <strong>Name:</strong> {{ name }},
                 <strong>Email:</strong> {{ email }}
@@ -34,6 +37,7 @@ const getUsers = (page, callback) => {
 export default {
     data() {
         return {
+            message: null,
             users: null,
             meta: null,
             links: {

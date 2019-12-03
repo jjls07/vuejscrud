@@ -11,6 +11,7 @@ Vue.use(VueRouter)
 import App from './views/App'
 import Hello from './views/Hello'
 import Home from './views/Home'
+import NotFound from './views/NotFound'
 
 const router = new VueRouter({
     mode: 'history',
@@ -40,16 +41,8 @@ const router = new VueRouter({
       name: 'users.create',
       component: UsersCreate,
         },
-/*         {
-       path: '/404',
-        name: '404',
-        component: NotFound,
-        },
-        {
-          path: '*',
-        redirect: '/404',
-      },
-*/
+        { path: '/404', name: '404', component: NotFound },
+        { path: '*', redirect: '/404' },
     ],
 });
 

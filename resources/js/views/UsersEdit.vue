@@ -14,15 +14,13 @@
         <div class="form-group">
             <button type="submit" :disabled="saving">Update</button>
             <button :disabled="saving" @click.prevent="onDelete($event)">Delete</button>
-            <router-link to="/users">Back</router-link>
+
         </div>
     </form>
   </div>
 </template>
-
 <script>
 import api from '../api/users';
-import axios from 'axios';
 
 export default {
   data() {
@@ -30,7 +28,6 @@ export default {
       message: null,
       loaded: false,
       saving: false,
-
       user: {
         id: null,
         name: "",
@@ -40,26 +37,19 @@ export default {
   },
   methods: {
     onSubmit(event) {
-      this.saving = true;
+        this.saving = true;
 
-      api.update(this.user.id, {
-          name: this.user.name,
-          email: this.user.email,
-      }).then((response) => {
-          this.message = 'User updated';
-          setTimeout(() => this.message = null, 2000);
-          this.user = response.data.data;
-          if(response.status === 200) {
-            this.$router.push({ path : '/hello' });
-        }
-
-
-
-      }).catch(error => {
-          console.log(error)
-      }).then(_ => this.saving = false);
+        api.update(this.user.id, {
+            name: this.user.name,
+            email: this.user.email,
+        }).then((response) => {
+            this.message = 'User updated';
+            setTimeout(() => this.message = null, 10000);
+            this.user = response.data.data;
+        }).catch(error => {
+            console.log(error)
+        }).then(_ => this.saving = false);
     },
-
     onDelete() {
       this.saving = true;
       api.delete(this.user.id)
@@ -68,6 +58,7 @@ export default {
             setTimeout(() => this.$router.push({ name: 'users.index' }), 2000);
          });
     }
+
 
   },
   created() {
@@ -81,12 +72,8 @@ export default {
        });
   }
 
-
-
-
-};
+ };
 </script>
-
 <style lang="scss" scoped>
 $red: lighten(red, 30%);
 $darkRed: darken($red, 50%);
