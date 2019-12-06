@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import UsersIndex from './views/UsersIndex';
 import UsersEdit from './views/UsersEdit';
 import UsersCreate from './views/UsersCreate';
+import Register from './views/Register';
 
 
 
@@ -40,6 +41,11 @@ const router = new VueRouter({
       path: '/users/create',
       name: 'users.create',
       component: UsersCreate,
+        },
+        {
+      path: '/register',
+      name: 'register',
+      component: Register,
         },
         { path: '/404', name: '404', component: NotFound },
         { path: '*', redirect: '/404' },

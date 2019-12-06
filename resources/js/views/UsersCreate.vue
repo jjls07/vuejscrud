@@ -12,6 +12,13 @@
               <input id="user_email" type="email" v-model="user.email" />
           </div>
           <div class="form-group">
+              <label for="user_role_id">Role</label>
+              <select id="user_role_id" v-model="user.role_id">
+                <option value="1">Administrator</option>
+                <option value="2">Regular</option>
+              </select>
+          </div>
+          <div class="form-group">
               <label for="user_password">Password</label>
               <input id="user_password" type="password" v-model="user.password" />
           </div>
@@ -35,6 +42,7 @@
                     name: '',
                     email: '',
                     password: '',
+                    role_id: '2',
                 }
             }
         },

@@ -22,6 +22,7 @@ Route::namespace('Api')->group(function () {
     Route::put('/users/{user}', 'UsersController@update');
     Route::delete('/users/{user}', 'UsersController@destroy');
     Route::post('/users', 'UsersController@store');
+    Route::post('/register', 'RegisterUserController@store');
 
 
 });

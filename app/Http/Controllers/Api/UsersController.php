@@ -23,6 +23,7 @@ class UsersController extends Controller
       $data = $request->validate([
           'name' => 'required',
           'email' => 'required|email',
+          'role_id' => 'required',
       ]);
 
       $user->update($data);
@@ -43,12 +44,14 @@ public function store(Request $request)
         'name' => 'required',
         'email' => 'required|unique:users',
         'password' => 'required|min:8',
+        'role_id' => 'required',
     ]);
 
     return new UserResource(User::create([
         'name' => $data['name'],
         'email' => $data['email'],
         'password' => bcrypt($data['password']),
+        'role_id' => $data['role_id'],
     ]));
 }
 

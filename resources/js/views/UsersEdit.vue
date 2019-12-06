@@ -12,11 +12,20 @@
             <input id="user_email" type="email" v-model="user.email" />
         </div>
         <div class="form-group">
+            <label for="user_role_id">Role</label>
+            <select id="user_role_id" v-model="user.role_id">
+              <option value="1">Administrator</option>
+              <option value="2">Regular</option>
+            </select>
+        </div>
+        <div class="form-group">
             <button type="submit" :disabled="saving">Update</button>
             <button :disabled="saving" @click.prevent="onDelete($event)">Delete</button>
 
         </div>
     </form>
+    <br>
+     <router-link to="/users">Go back</router-link>
   </div>
 </template>
 <script>
@@ -31,7 +40,8 @@ export default {
       user: {
         id: null,
         name: "",
-        email: ""
+        email: "",
+        role_id: "",
       }
     };
   },
@@ -42,9 +52,10 @@ export default {
         api.update(this.user.id, {
             name: this.user.name,
             email: this.user.email,
+            role_id: this.user.role_id,
         }).then((response) => {
             this.message = 'User updated';
-            setTimeout(() => this.message = null, 10000);
+            setTimeout(() => this.$router.push({ name: 'users.index' }), 2000);
             this.user = response.data.data;
         }).catch(error => {
             console.log(error)
