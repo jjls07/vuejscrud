@@ -1,0 +1,29 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is up to date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   app/Http/Controllers/Api/UsersController.php
+#	modified:   app/Http/Resources/UserResource.php
+#	modified:   app/User.php
+#	modified:   database/factories/UserFactory.php
+#	modified:   database/migrations/2014_10_12_000000_create_users_table.php
+#	modified:   database/seeds/DatabaseSeeder.php
+#	modified:   public/js/app.js
+#	modified:   resources/js/app.js
+#	modified:   resources/js/views/UsersCreate.vue
+#	modified:   resources/js/views/UsersEdit.vue
+#	modified:   resources/js/views/UsersIndex.vue
+#	modified:   routes/api.php
+#
+# Untracked files:
+#	app/Http/Controllers/Api/RegisterUserController.php
+#	database/migrations/2019_12_05_140714_create_roles_table.php
+#	database/seeds/RolesTableSeeder.php
+#	resources/js/views/Register.vue
+#
+
+Se añadieron nuevas fucniones y roles
