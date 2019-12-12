@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 
@@ -11,7 +12,16 @@ class UsersController extends Controller
 {
     public function index()
     {
-        return UserResource::collection(User::paginate(10));
+      $users = DB::table('users')
+      ->join('roles', 'roles.id', '=', 'users.role_id')
+      ->select('users.id', 'users.name',
+      'users.email',
+      'roles.name as role_id')
+      ->get();
+
+      $users = User::paginate(10);
+      return UserResource::collection($users);
+        //return UserResource::collection(User::paginate(10));
     }
 
     public function show(User $user)

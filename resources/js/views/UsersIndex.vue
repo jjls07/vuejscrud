@@ -6,15 +6,20 @@
         </div>
         <div v-if="message" class="alert">{{ message }}</div>
 
-        <ul v-if="users">
-
-            <li v-for="{ id, name, email, role_id } in users">
-                <strong>Name:</strong> {{ name }},
-                <strong>Email:</strong> {{ email }}
-                <strong>Rol:</strong> {{ role_id }}
-                <router-link :to="{ name: 'users.edit', params: { id } }">Edit</router-link>
-            </li>
-        </ul>
+        <table v-if="users">
+                  <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Rol</th>
+          <th>Action</th>
+        </tr>
+            <tr v-for="{ id, name, email, role_id } in users">
+                <td>{{ name }}</td>
+                <td>{{ email }}</td>
+                <td> {{ role_id }}</td>
+                <td><router-link :to="{ name: 'users.edit', params: { id } }">Edit</router-link></td>
+              </tr>
+      </table>
 
         <div class="pagination">
             <button :disabled="! prevPage" @click.prevent="goToPrev">Previous</button>
@@ -113,3 +118,8 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
